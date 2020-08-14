@@ -10,7 +10,7 @@ speed = 15
 block = 10
 dis = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Snake game by Me')
-font_style = pygame.font.SysFont("bahnschrift", 25)
+font_style = pygame.font.SysFont(None, 25)
 
 # Colors
 yellow = (255, 255, 102)
@@ -35,7 +35,7 @@ def show_score(score):
 
 def our_snake(block, snake_list):
     for x in snake_list:
-        pygame.draw.rect(dis, white, [round(x[0]), round(x[1]), block, block])
+        pygame.draw.rect(dis, green, [round(x[0]), round(x[1]), block, block])
 
 
 def gameLoop():
