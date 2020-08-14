@@ -53,14 +53,14 @@ while not game_over:
 		game_over = True
 	x1 += x1_change
 	y1 += y1_change
-
-	pygame.draw.rect(dis, blue, [round(x1), round(y1), 10, 10])
+	dis.fill(blue)
+	pygame.draw.rect(dis, white, [round(x1), round(y1), 10, 10])
 	pygame.display.update()
 	clock.tick(speed)
 
 message("Game Over", white)
 pygame.display.update()
-time.sleep(10)
+time.sleep(2)
 pygame.quit()
 quit()
 
