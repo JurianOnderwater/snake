@@ -22,7 +22,7 @@ font_style = pygame.font.SysFont(None, 50)
 
 def message(msg, color):
 	mes = font_style.render(msg, True, color)
-	dis.blit(mes, [round(width/3), round(height/3)])
+	dis.blit(mes, [round(width/4), round(height/3)])
 
 
 def gameLoop():
