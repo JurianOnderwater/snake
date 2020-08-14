@@ -6,7 +6,7 @@ pygame.init()
 # Game settings
 width = 800
 height = 600
-speed = 30
+speed = 15
 block = 10
 dis = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Snake game by Me')
