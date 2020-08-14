@@ -51,10 +51,12 @@ def gameLoop():
 
 	snake_List = []
 	Length_of_snake = 1
-
+	explored = []
 	foodx = round(random.randrange(0, width - block) / 10.0) * 10.0
 	foody = round(random.randrange(0, height - block) / 10.0) * 10.0
+	distance = distance_get(foodx, foody, x1, y1)
 	while not game_over:
+		possible_moves = ['left', 'right', 'up', 'down']
 		while game_close:
 			message("Press 1 to play again, 2 to close game", white)
 			pygame.display.update()
@@ -71,7 +73,24 @@ def gameLoop():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				game_over = True
-		move = go('up', x1_change, y1_change)
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_LEFT:
+					x1_change = -block
+					y1_change = 0
+				elif event.key == pygame.K_RIGHT:
+					x1_change = block
+					y1_change = 0
+				elif event.key == pygame.K_UP:
+					x1_change = 0
+					y1_change = -block
+				elif event.key == pygame.K_DOWN:
+					x1_change = 0
+					y1_change = block
+		result = selector(possible_moves, explored, distance, foodx, foody, x1, y1)
+		best = result[0]
+		explored = result[1]
+		move = go(best, x1_change, y1_change)
+
 		x1_change = move[0]
 		y1_change = move[1]
 		if x1 < 0 or x1 >= width or y1 < 0 or y1 >= height:
@@ -93,7 +112,8 @@ def gameLoop():
 				game_close = True
 
 		our_snake(block, snake_List)
-		show_score(Length_of_snake - 1)
+		distance = distance_get(foodx, foody, x1, y1)
+		show_score(round(distance))
 		pygame.display.update()
 
 		if x1 == foodx and y1 == foody:
