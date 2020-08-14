@@ -8,5 +8,5 @@ keyboard = Controller()
 
 gameLoop()
 time.sleep(10)
-keyboard.press(Key.up)
-keyboard.release(Key.up)
+keyboard.press('a')
+keyboard.release('a')
