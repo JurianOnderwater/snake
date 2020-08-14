@@ -41,7 +41,7 @@ while not game_over:
 	y1 += y1_change
 	dis.fill(white)
 
-	pygame.draw.rect(dis, black, [200, 150, 10, 10])
+	pygame.draw.rect(dis, black, [x1, y1, 10, 10])
 	pygame.display.update()
 	clock.tick(30)
 pygame.quit()
