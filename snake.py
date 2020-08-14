@@ -22,7 +22,7 @@ font_style = pygame.font.SysFont(None, 50)
 
 def message(msg, color):
 	mes = font_style.render(msg, True, color)
-	dis.blit(mes, [round(width/2), round(height/2)])
+	dis.blit(mes, [round(width/3), round(height/3)])
 
 
 def gameLoop():
@@ -70,7 +70,7 @@ def gameLoop():
 		pygame.display.update()
 		clock.tick(speed)
 
-	message("Game Over", white)
+	message("Thank you for playing!", white)
 	pygame.display.update()
 	time.sleep(2)
 	pygame.quit()
