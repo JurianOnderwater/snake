@@ -49,7 +49,7 @@ def gameLoop():
 	y1_change = 0
 
 	snake_List = []
-	Length_of_snake = 0
+	Length_of_snake = 1
 
 	foodx = round(random.randrange(0, width - block) / 10.0) * 10.0
 	foody = round(random.randrange(0, height - block) / 10.0) * 10.0
@@ -102,7 +102,7 @@ def gameLoop():
 				game_close = True
 
 		our_snake(block, snake_List)
-		show_score(Length_of_snake)
+		show_score(Length_of_snake - 1)
 		pygame.display.update()
 
 		if x1 == foodx and y1 == foody:
