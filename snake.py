@@ -30,6 +30,7 @@ def message(msg, color):
 
 def show_score(score):
 	mes = font_style.render("Score: " + str(score), True, yellow)
+	dis.blit(mes, [0, 0])
 
 
 def our_snake(block, snake_list):
