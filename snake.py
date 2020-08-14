@@ -62,7 +62,7 @@ def gameLoop():
 					x1_change = 0
 					y1_change = 10
 		if x1 < 0 or x1 >= width or y1 < 0 or y1 >= height:
-			game_over = True
+			game_close = True
 		x1 += x1_change
 		y1 += y1_change
 		dis.fill(blue)
