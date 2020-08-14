@@ -1,7 +1,7 @@
 import pygame
 
 pygame.init()
-dis = pygame.display.set_mode((400, 300))
+dis = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('Snake game by Me')
 
 #colors
@@ -39,9 +39,8 @@ while not game_over:
 				y1_change = 10
 	x1 += x1_change
 	y1 += y1_change
-	dis.fill(white)
 
-	pygame.draw.rect(dis, black, [x1, y1, 10, 10])
+	pygame.draw.rect(dis, blue, [x1, y1, 10, 10])
 	pygame.display.update()
 	clock.tick(30)
 pygame.quit()
