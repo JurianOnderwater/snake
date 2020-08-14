@@ -22,7 +22,7 @@ font_style = pygame.font.SysFont(None, 50)
 
 def message(msg, color):
 	mes = font_style.render(msg, True, color)
-	dis.blit(mes, [round(width/4), round(height/3)])
+	dis.blit(mes, [round(width/10), round(height/3)])
 
 
 def gameLoop():
@@ -45,6 +45,9 @@ def gameLoop():
 					elif event.key == pygame.K_2:
 						game_over = True
 						game_close = False
+				if event.type == pygame.QUIT:
+					game_over = True
+					game_close = False
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				game_over = True
