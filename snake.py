@@ -13,9 +13,11 @@ pygame.display.set_caption('Snake game by Me')
 font_style = pygame.font.SysFont("bahnschrift", 25)
 
 # Colors
-blue = (0, 0, 255)
-red = (255, 0, 255)
+yellow = (255, 255, 102)
 black = (0, 0, 0)
+red = (213, 50, 80)
+green = (0, 255, 0)
+blue = (50, 153, 213)
 white = (255, 255, 255)
 
 clock = pygame.time.Clock()
@@ -24,6 +26,10 @@ clock = pygame.time.Clock()
 def message(msg, color):
 	mes = font_style.render(msg, True, color)
 	dis.blit(mes, [round(width/10), round(height/3)])
+
+
+def show_score(score):
+	mes = font_style.render("Score: " + str(score), True, yellow)
 
 
 def our_snake(block, snake_list):
@@ -42,7 +48,7 @@ def gameLoop():
 	y1_change = 0
 
 	snake_List = []
-	Length_of_snake = 1
+	Length_of_snake = 0
 
 	foodx = round(random.randrange(0, width - block) / 10.0) * 10.0
 	foody = round(random.randrange(0, height - block) / 10.0) * 10.0
@@ -95,7 +101,7 @@ def gameLoop():
 				game_close = True
 
 		our_snake(block, snake_List)
-
+		show_score(Length_of_snake)
 		pygame.display.update()
 
 		if x1 == foodx and y1 == foody:
