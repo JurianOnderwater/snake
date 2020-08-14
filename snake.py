@@ -29,7 +29,7 @@ font_style = pygame.font.SysFont(None, 50)
 
 def message(msg, color):
 	mes = font_style.render(msg, True, color)
-	dis.blit(mes, [width/2, height/2])
+	dis.blit(mes, [x1, y1])
 
 
 while not game_over:
