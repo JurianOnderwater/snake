@@ -49,7 +49,7 @@ while not game_over:
 			elif event.key == pygame.K_DOWN:
 				x1_change = 0
 				y1_change = 10
-	if x1 <= 0 or x1 >= width or y1 <= 0 or y1 >= 0:
+	if x1 < 0 or x1 >= width or y1 < 0 or y1 >= height:
 		game_over = True
 	x1 += x1_change
 	y1 += y1_change
