@@ -25,16 +25,16 @@ while not game_over:
 		if event.type == pygame.QUIT:
 			game_over = True
 		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K.LEFT:
+			if event.key == pygame.K_LEFT:
 				x1_change = -10
 				y1_change = 0
-			elif event.key == pygame.K.RIGHT:
+			elif event.key == pygame.K_RIGHT:
 				x1_change = 10
 				y1_change = 0
-			elif event.key == pygame.K.UP:
+			elif event.key == pygame.K_UP:
 				x1_change = 0
 				y1_change = -10
-			elif event.key == pygame.K.DOWN:
+			elif event.key == pygame.K_DOWN:
 				x1_change = 0
 				y1_change = 10
 	x1 += x1_change
