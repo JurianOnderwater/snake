@@ -7,6 +7,6 @@ from pynput.keyboard import Key, Controller
 keyboard = Controller()
 
 gameLoop()
-time.sleep(10)
+time.sleep(2)
 keyboard.press('a')
 keyboard.release('a')
