@@ -54,7 +54,7 @@ while not game_over:
 	x1 += x1_change
 	y1 += y1_change
 
-	pygame.draw.rect(dis, blue, [x1, y1, 10, 10])
+	pygame.draw.rect(dis, blue, [round(x1), round(y1), 10, 10])
 	pygame.display.update()
 	clock.tick(speed)
 
