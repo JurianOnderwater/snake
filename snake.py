@@ -59,6 +59,7 @@ while not game_over:
 	clock.tick(speed)
 
 message("Game Over", white)
+time.sleep(10)
 pygame.quit()
 quit()
 
