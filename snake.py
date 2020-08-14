@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+from ai import *
 
 pygame.init()
 # Game settings
@@ -53,9 +54,8 @@ def gameLoop():
 
 	foodx = round(random.randrange(0, width - block) / 10.0) * 10.0
 	foody = round(random.randrange(0, height - block) / 10.0) * 10.0
-
 	while not game_over:
-		while game_close == True:
+		while game_close:
 			message("Press 1 to play again, 2 to close game", white)
 			pygame.display.update()
 			for event in pygame.event.get():
@@ -71,21 +71,12 @@ def gameLoop():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				game_over = True
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_LEFT:
-					x1_change = -block
-					y1_change = 0
-				elif event.key == pygame.K_RIGHT:
-					x1_change = block
-					y1_change = 0
-				elif event.key == pygame.K_UP:
-					x1_change = 0
-					y1_change = -block
-				elif event.key == pygame.K_DOWN:
-					x1_change = 0
-					y1_change = block
+		move = go('up', x1_change, y1_change)
+		x1_change = move[0]
+		y1_change = move[1]
 		if x1 < 0 or x1 >= width or y1 < 0 or y1 >= height:
 			game_close = True
+
 		x1 += x1_change
 		y1 += y1_change
 		dis.fill(black)
@@ -114,10 +105,27 @@ def gameLoop():
 
 	message("Thank you for playing!", white)
 	pygame.display.update()
-	time.sleep(2)
 	pygame.quit()
 	quit()
 
-#gameLoop()
+gameLoop()
 
+'''
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				game_over = True
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_LEFT:
+					x1_change = -block
+					y1_change = 0
+				elif event.key == pygame.K_RIGHT:
+					x1_change = block
+					y1_change = 0
+				elif event.key == pygame.K_UP:
+					x1_change = 0
+					y1_change = -block
+				elif event.key == pygame.K_DOWN:
+					x1_change = 0
+					y1_change = block
+'''
 

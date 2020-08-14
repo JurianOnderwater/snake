@@ -1,12 +1,20 @@
 import pygame
 import time
 import random
-from snake import *
-from pynput.keyboard import Key, Controller
+block = 10
 
-keyboard = Controller()
 
-gameLoop()
-time.sleep(3)
-keyboard.press(Key.up)
-keyboard.release(Key.up)
+def go(direction, x1_change, y1_change):
+	if direction == 'left':
+		x1_change = -block
+		y1_change = 0
+	elif direction == 'right':
+		x1_change = block
+		y1_change = 0
+	elif direction == 'up':
+		x1_change = 0
+		y1_change = -block
+	elif direction == 'down':
+		x1_change = 0
+		y1_change = block
+	return x1_change, y1_change
