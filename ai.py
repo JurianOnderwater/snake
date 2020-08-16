@@ -2,8 +2,7 @@ import pygame
 import time
 import random
 import math
-
-block = 10
+from helper import *
 
 
 def best_first_search(fx, fy, sx, sy, exception=[]):
