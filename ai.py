@@ -6,7 +6,7 @@ import math
 block = 10
 
 
-def go(direction, x1_change, y1_change):
+def go(direction):
 	if direction == 'left':
 		x1_change = -block
 		y1_change = 0
@@ -30,7 +30,35 @@ def distance_get(fx, fy, sx, sy):
 	return distance
 
 
-def selector(possible_moves, explored, d1, fx, fy, sx, sy):
+def best_first_search(fx, fy, sx, sy, exception=[]):
+	if fx > sx and 'right' not in exception:
+		move = 'right'
+	elif fx < sx and 'left' not in exception:
+		move = 'left'
+	elif fy > sy and 'down' not in exception:
+		move = 'down'
+	elif fy < sy and 'up' not in exception:
+		move = 'up'
+	else:
+		move = 'none'
+	return move
+
+
+def avoid_tail(snake_List, move, x1, y1):
+	x1_change = move[0]
+	y1_change = move[1]
+	x1 += x1_change
+	y1 += y1_change
+	snake_Head = []
+	snake_Head.append(x1)
+	snake_Head.append(y1)
+	snake_List.append(snake_Head)
+	for x in snake_List[:-1]:
+		if x == snake_Head:
+			return False
+	return True
+
+def hill_climbing(possible_moves, explored, d1, fx, fy, sx, sy):
 	best_move = 'none'
 	check = 0
 	for direction in possible_moves:

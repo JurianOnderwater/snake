@@ -7,7 +7,7 @@ pygame.init()
 # Game settings
 width = 800
 height = 600
-speed = 15
+speed = 250
 block = 10
 dis = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Snake game by Me')
@@ -34,7 +34,7 @@ def show_score(score):
 	dis.blit(mes, [0, 0])
 
 
-def our_snake(block, snake_list):
+def draw_snake(block, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, green, [round(x[0]), round(x[1]), block, block])
 
@@ -54,9 +54,8 @@ def gameLoop():
 	explored = []
 	foodx = round(random.randrange(0, width - block) / 10.0) * 10.0
 	foody = round(random.randrange(0, height - block) / 10.0) * 10.0
-	distance = distance_get(foodx, foody, x1, y1)
+	#distance = distance_get(foodx, foody, x1, y1)
 	while not game_over:
-		possible_moves = ['left', 'right', 'up', 'down']
 		while game_close:
 			message("Press 1 to play again, 2 to close game", white)
 			pygame.display.update()
@@ -86,13 +85,11 @@ def gameLoop():
 				elif event.key == pygame.K_DOWN:
 					x1_change = 0
 					y1_change = block
-		result = selector(possible_moves, explored, distance, foodx, foody, x1, y1)
-		best = result[0]
-		explored = result[1]
-		move = go(best, x1_change, y1_change)
-
+		dir = best_first_search(foodx, foody, x1, y1)
+		move = go(dir)
 		x1_change = move[0]
 		y1_change = move[1]
+
 		if x1 < 0 or x1 >= width or y1 < 0 or y1 >= height:
 			game_close = True
 
@@ -100,20 +97,15 @@ def gameLoop():
 		y1 += y1_change
 		dis.fill(black)
 		pygame.draw.rect(dis, blue, [round(foodx), round(foody), block, block])
-		snake_Head = []
-		snake_Head.append(x1)
-		snake_Head.append(y1)
-		snake_List.append(snake_Head)
+		if [x1, y1] in snake_List:
+			game_close = True
+		snake_List.append([x1, y1])
 		if len(snake_List) > Length_of_snake:
 			del snake_List[0]
 
-		for x in snake_List[:-1]:
-			if x == snake_Head:
-				game_close = True
-
-		our_snake(block, snake_List)
-		distance = distance_get(foodx, foody, x1, y1)
-		show_score(round(distance))
+		draw_snake(block, snake_List)
+		#distance = distance_get(foodx, foody, x1, y1)
+		show_score(Length_of_snake)
 		pygame.display.update()
 
 		if x1 == foodx and y1 == foody:
