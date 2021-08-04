@@ -79,7 +79,7 @@ def game_loop():
 			snake_length += 1
 		show_score(snake_length)
 		pygame.display.update()
-		clock.tick(speed)
+		clock.tick(get_speed(x1,y1,food_x,food_y))
 
 	message("Thank you for playing!", white)
 	pygame.display.update()

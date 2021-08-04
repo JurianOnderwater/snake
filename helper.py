@@ -1,13 +1,14 @@
 import pygame
 import time
 import random
+import math
 
 pygame.init()
 
 # Game settings
 width = 800
 height = 600
-speed = 250
+# speed = get_speed()
 block = 10
 dis = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Snake game by Me')
@@ -56,6 +57,10 @@ def message(msg, color):
 def show_score(score):
 	mes = font_style.render("Score: " + str(score), True, yellow)
 	dis.blit(mes, [0, 0])
+
+def get_speed(fx,fy,sx,sy):
+	speed = distance_get(fx,fy,sx,sy)
+	return speed
 
 
 def draw_snake(snake_list):
